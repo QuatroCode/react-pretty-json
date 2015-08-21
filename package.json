@@ -1,5 +1,5 @@
 {
-  "name": "json-html-view",
+  "name": "react-pretty-json",
   "version": "1.0.0",
   "description": "JSON to HTML generator with colors and collapsible brackets.",
   "main": "index.js",
