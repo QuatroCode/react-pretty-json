@@ -18,7 +18,8 @@
     "generator"
   ],
   "files": [
-    "assets"
+    "assets",
+    "*.d.ts"
   ],
   "author": "Martynas Zilinskas <martynas@quatrodev.com>, Dovydas Navickas <dovydas@quatrodev.com>",
   "license": "GPL-3.0",
