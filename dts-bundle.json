@@ -1,0 +1,6 @@
+{
+    "name": "react-pretty-json",
+    "main": "./dist/json-view.d.ts",
+    "out": "../react-pretty-json.d.ts",
+    "removeSource": true
+}
