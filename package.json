@@ -1,6 +1,6 @@
 {
   "name": "react-pretty-json",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "JSON to HTML generator with colors and collapsible brackets.",
   "main": "index.js",
   "scripts": {
@@ -12,35 +12,6 @@
     "html",
     "generator"
   ],
-  "author": "QuatroDEV",
-  "license": "",
-  "devDependencies": {
-    "connect-livereload": "^0.5.3",
-    "express": "^4.13.3",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-embedlr": "^0.5.2",
-    "gulp-livereload": "^3.8.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.0.4",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-typescript": "^2.8.0",
-    "object-assign": "^3.0.0",
-    "react-jsx-anywhere": "^0.1.2",
-    "tiny-lr": "^0.1.6",
-    "typescript": "1.5.0-beta"
-  },
-  "jspm": {
-    "directories": {},
-    "dependencies": {
-      "css": "github:systemjs/plugin-css@^0.1.13",
-      "jquery": "github:components/jquery@^2.1.4",
-      "json-markup": "npm:json-markup@^0.1.6",
-      "react": "npm:react@0.13.3"
-    },
-    "devDependencies": {
-      "traceur": "github:jmcriffey/bower-traceur@0.0.88",
-      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88"
-    }
-  }
+  "author": "Martynas Zilinskas <martynas@quatrodev.com>, Dovydas Navickas <dovydas@quatrodev.com>",
+  "license": "GPL-3.0",
 }
