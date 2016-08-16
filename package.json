@@ -1,46 +1,37 @@
 {
   "name": "react-pretty-json",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "JSON to HTML generator with colors and collapsible brackets.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build-ts && npm run dts-bundle && npm run rollup && npm run build-scss",
+    "build-ts": "tsc -p .",
+    "build-scss": "node-sass ./src/assets/json-view.scss ./assets/json-view.css --output-style compressed",
+    "dts-bundle": "dts-bundle --configJson dts-bundle.json",
+    "rollup": "rollup -c rollup.config.js",
+    "prepublish": "npm run build"
   },
   "keywords": [
-    "Json",
+    "json",
     "to",
     "html",
     "generator"
   ],
-  "author": "QuatroDEV",
-  "license": "",
+  "files": [
+    "assets"
+  ],
+  "author": "Martynas Zilinskas <martynas@quatrodev.com>, Dovydas Navickas <dovydas@quatrodev.com>",
+  "license": "GPL-3.0",
   "devDependencies": {
-    "connect-livereload": "^0.5.3",
-    "express": "^4.13.3",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-embedlr": "^0.5.2",
-    "gulp-livereload": "^3.8.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.0.4",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-typescript": "^2.8.0",
-    "object-assign": "^3.0.0",
-    "react-jsx-anywhere": "^0.1.2",
-    "tiny-lr": "^0.1.6",
-    "typescript": "1.5.0-beta"
+    "@types/react": "^0.14.30",
+    "dts-bundle": "^0.5.0",
+    "node-sass": "^3.8.0",
+    "rollup": "^0.33.2",
+    "rollup-plugin-typescript": "0.7.7",
+    "rollup-plugin-uglify": "^1.0.1",
+    "typescript": "^2.0.0"
   },
-  "jspm": {
-    "directories": {},
-    "dependencies": {
-      "css": "github:systemjs/plugin-css@^0.1.13",
-      "jquery": "github:components/jquery@^2.1.4",
-      "json-markup": "npm:json-markup@^0.1.6",
-      "react": "npm:react@0.13.3"
-    },
-    "devDependencies": {
-      "traceur": "github:jmcriffey/bower-traceur@0.0.88",
-      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88"
-    }
+  "dependencies": {
+    "react": "^15.3.0"
   }
 }

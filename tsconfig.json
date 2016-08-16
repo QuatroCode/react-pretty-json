@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "jsx": "react",
+        "noImplicitAny": false,
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "noLib": false,
+        "sourceMap": false,
+        "outDir": "dist",
+        "rootDir": "src",
+        "declaration": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "noUnusedLocals": true,
+        "noImplicitThis": true,
+        "noImplicitUseStrict": true,
+        "strictNullChecks": true
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
