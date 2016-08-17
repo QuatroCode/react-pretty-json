@@ -6,6 +6,7 @@ export interface Props {
     json: any;
     level: number;
     spaces: number;
+    clickId: number;
 }
 
 export interface State {
@@ -17,8 +18,20 @@ export default class JsonArray extends React.Component<Props, State> {
         Collapsed: false
     };
 
+    componentWillMount() {
+        if (this.props.clickId != null) {
+            Formatter.RegisterClickCallback(this.props.clickId, () => {
+                this.toggleCollapse();
+            });
+        }
+    }
+
     // TODO: Fix any.
-    private toggleCollapse: React.EventHandler<React.MouseEvent<any>> = (event) => {
+    private onClick: React.EventHandler<React.MouseEvent<any>> = (event) => {
+        this.toggleCollapse();
+    }
+
+    private toggleCollapse() {
         this.setState((state) => {
             state.Collapsed = !state.Collapsed;
             return state;
@@ -30,11 +43,11 @@ export default class JsonArray extends React.Component<Props, State> {
         let countLoop = arr.length;
 
         for (let item in arr) {
-            let content = Formatter.valueToHtml(arr[item], this.props.spaces, this.props.level);
+            let innerContent = Formatter.valueToHtml(arr[item], this.props.spaces, this.props.level);
             countLoop--;
             items.push(<div key={'array-item-' + item}>
                 {Helpers.generateSpace(this.props.level * this.props.spaces + this.props.spaces)}
-                {content}
+                {innerContent.content}
                 {countLoop !== 0 ? ',' : ''}
             </div>);
         }
@@ -56,9 +69,9 @@ export default class JsonArray extends React.Component<Props, State> {
             }
 
             return <span className="array">
-                <span className="brackets-start" onClick={this.toggleCollapse}>{'['}</span>
+                <span className="brackets collapsible" onClick={this.onClick}>{'['}</span>
                 {content}
-                <span className="brackets">{Helpers.generateSpace(bracketSpaces)}{']'}</span>
+                <span className="brackets collapsible" onClick={this.onClick}>{Helpers.generateSpace(bracketSpaces)}{']'}</span>
             </span>
         }
         return <span className="array">{'[ ]'}</span>;

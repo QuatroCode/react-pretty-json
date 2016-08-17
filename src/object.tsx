@@ -6,6 +6,7 @@ export interface Props {
     json: any;
     level: number;
     spaces: number;
+    clickId: number;
 }
 
 export interface State {
@@ -17,8 +18,20 @@ export default class JsonObject extends React.Component<Props, State> {
         Collapsed: false
     };
 
+    componentWillMount() {
+        if (this.props.clickId != null) {
+            Formatter.RegisterClickCallback(this.props.clickId, () => {
+                this.toggleCollapse();
+            });
+        }
+    }
+
     // TODO: Fix any.
-    private toggleCollapse: React.EventHandler<React.MouseEvent<any>> = (event) => {
+    private onClick: React.EventHandler<React.MouseEvent<any>> = (event) => {
+        this.toggleCollapse();
+    }
+
+    private toggleCollapse() {
         this.setState((state) => {
             state.Collapsed = !state.Collapsed;
             return state;
@@ -31,12 +44,17 @@ export default class JsonObject extends React.Component<Props, State> {
 
         for (let item in obj) {
             let name = Helpers.htmlEncode(item);
-            let content = Formatter.valueToHtml(obj[item], this.props.spaces, this.props.level);
+            let innerContent = Formatter.valueToHtml(obj[item], this.props.spaces, this.props.level);
+            let collapsibleClassName = (innerContent.collapsible ? 'collapsible' : '');
             countLoop--;
             items.push(<div key={'object-item-' + item}>
                 {Helpers.generateSpace(this.props.level * this.props.spaces + this.props.spaces)}
-                <span className="key">{`"${name}"`}</span>:
-                {content}
+                <span className={`key ${collapsibleClassName}`} onClick={() => {
+                    if (innerContent.collapsible && innerContent.onClickHandler != null) {
+                        innerContent.onClickHandler();
+                    }
+                } }>{`"${name}"`}</span>:
+                {innerContent.content}
                 {countLoop !== 0 ? ',' : ''}
             </div>);
         }
@@ -60,9 +78,9 @@ export default class JsonObject extends React.Component<Props, State> {
             }
 
             return <span className={`object ${collapserClassName}`}>
-                <span className="brackets-start" onClick={this.toggleCollapse}>{'{'}</span>
+                <span className="brackets collapsible" onClick={this.onClick}>{'{'}</span>
                 {content}
-                <span className="brackets">{Helpers.generateSpace(bracketSpaces)}{'}'}</span>
+                <span className="brackets collapsible" onClick={this.onClick}>{Helpers.generateSpace(bracketSpaces)}{'}'}</span>
             </span>
         }
         return <span className="object">{'{ }'}</span>;
