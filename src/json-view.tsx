@@ -16,7 +16,7 @@ export default class JsonView extends React.Component<Props, State> {
 
     render() {
         return <div className="json-view">
-            {Formatter.valueToHtml(this.props.json, this.props.spaces as number)}
+            {Formatter.valueToHtml(this.props.json, this.props.spaces as number).content}
         </div>;
     }
 }
