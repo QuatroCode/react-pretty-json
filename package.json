@@ -26,5 +26,7 @@
     "peerDependencies": {
         "react": "^16.8.6"
     },
-    "dependencies": {}
+    "dependencies": {
+        "tslib": "^1.9.3"
+    }
 }
