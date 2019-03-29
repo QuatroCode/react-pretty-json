@@ -2,25 +2,25 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
-        "jsx": "react",
-        "noImplicitAny": false,
-        "removeComments": false,
-        "preserveConstEnums": true,
-        "noLib": false,
-        "sourceMap": false,
         "outDir": "dist",
         "rootDir": "src",
-        "declaration": true,
-        "typeRoots": [
-            "node_modules/@types"
-        ],
+        "jsx": "react",
         "noUnusedLocals": true,
-        "noImplicitThis": true,
-        "noImplicitUseStrict": true,
-        "strictNullChecks": true
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "declaration": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmitHelpers": true,
+        "importHelpers": true,
+        "esModuleInterop": true,
+        "plugins": [
+            {
+                "name": "tslint-language-service",
+                "alwaysShowRuleFailuresAsWarnings": true,
+                "ignoreDefinitionFiles": true
+            }
+        ]
     },
-    "exclude": [
-        "node_modules",
-        "dist"
-    ]
+    "exclude": ["__tests__", "dist"]
 }
